@@ -1,31 +1,156 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@using BooksBlog.ViewModels;
+@model IEnumerable<GuestPostViewModel>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<header class="intro-header" style="background-image: url('Images/books.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1></h1>
+                    <hr class="small">
+                    <span class="subheading">Books are a uniquely portable magic</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+            @foreach (var post in Model)
+            {
+                <div class="post-preview">
+                    <a href="Home/Info/@post.Id">
+                        <h2 class="post-title">
+                            @post.Title
+                        </h2>
+                        <h3 class="post-subtitle">
+                            @Html.Raw(post.Content)
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted on @post.CreatedOn</p>
+                    <p class="post-meta">Comments: @post.Comments.Count</p>
+                    <p class="post-meta">Category @Html.ActionLink(@post.Category.Name, "FilterByCategory", "Home", new { Id = post.Category.Id }, null)</p>
+                </div>
+                <hr>
+            }
+        </div>
+
+        <div class="col-md-3 sidebar-gutter">
+            <aside>
+                <!-- sidebar-widget -->
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">About Me</h3>
+                    <div class="widget-container widget-about">
+                        <a href="post.html"><img src="~/Content/Images/author.jpg" alt=""></a>
+                        <h4>Jamie Mooz</h4>
+                        <div class="author-title">Dreamer</div>
+                        <p>Gazing through the window at the world outside</p>
+                        <p>Wondering if mother earth will survive </p>
+                        <p>Hoping that mankind will stop abusing her, sometime.</p>
+                    </div>
+                </div>
+                <!-- sidebar-widget -->
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">Featured Posts</h3>
+                    <div class="widget-container">
+                        <article class="widget-post">
+                            <div class="post-image">
+                                <a href="post.html"><img src="images/90x60-1.jpg" alt=""></a>
+                            </div>
+                            <div class="post-body">
+                                <h2><a href="post.html">The State of the Word 2014</a></h2>
+                                <div class="post-meta">
+                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="widget-post">
+                            <div class="post-image">
+                                <a href="post.html"><img src="images/90x60-2.jpg" alt=""></a>
+                            </div>
+                            <div class="post-body">
+                                <h2><a href="post.html">Why The Muppets Needs to Channel 30 Rock</a></h2>
+                                <div class="post-meta">
+                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="widget-post">
+                            <div class="post-image">
+                                <a href="post.html"><img src="images/90x60-3.jpg" alt=""></a>
+                            </div>
+                            <div class="post-body">
+                                <h2><a href="post.html">The State of the Word 2014</a></h2>
+                                <div class="post-meta">
+                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="widget-post">
+                            <div class="post-image">
+                                <a href="post.html"><img src="images/90x60-4.jpg" alt=""></a>
+                            </div>
+                            <div class="post-body">
+                                <h2><a href="post.html">Vintage-Inspired Finds for Your Home</a></h2>
+                                <div class="post-meta">
+                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="widget-post">
+                            <div class="post-image">
+                                <a href="post.html"><img src="images/90x60-5.jpg" alt=""></a>
+                            </div>
+                            <div class="post-body">
+                                <h2><a href="post.html">The State of the Word 2014</a></h2>
+                                <div class="post-meta">
+                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <!-- sidebar-widget -->
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">Socials</h3>
+                    <div class="widget-container">
+                        <div class="widget-socials">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-reddit"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- sidebar-widget -->
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">Categories</h3>
+                    <div class="widget-container">
+                        <ul>
+                            @foreach (var item in Model)
+                            {<li>@Html.ActionLink(item.Category.Name, "FilterByCategory", "Home", new { Id = item.Category.Id }, null)
+                            </li>}
+                            <li><a href="#">Art</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Featured</a></li>
+                            <li><a href="#">Graphics</a></li>
+                            <li><a href="#">Peoples</a></li>
+                            <li><a href="#">Uncategorized</a></li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+<!-- Pager -->
+@*<ul class="pager">
+        <li class="next">
+            <a href="#">Older Posts &rarr;</a>
+        </li>
+    </ul>*@

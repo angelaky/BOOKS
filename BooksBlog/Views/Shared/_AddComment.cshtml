@@ -1,0 +1,31 @@
+﻿@using BooksBlog.ViewModels
+@model CommentViewModel
+<h2>Create your comment</h2>
+
+@using (Ajax.BeginForm("AddCommentAjax", "Comments", new { postId = ViewData["Id"] }, new AjaxOptions
+        { HttpMethod = "Post",
+            UpdateTargetId = "commentsList",
+            OnSuccess =  "HelperClear"
+        
+}))
+{
+
+    <div>
+        @Html.HiddenFor(m => m.Id)
+        @Html.LabelFor(m => m.Content)
+        @Html.TextBoxFor(m => m.Content, new { id="idcontent", @class = "form-contol" })
+    </div>
+
+    <input type="submit" />
+
+}
+
+<script type="text/javascript">
+
+    function HelperClear()
+    {
+        $("#idcontent").val("");
+    }
+
+</script>
+

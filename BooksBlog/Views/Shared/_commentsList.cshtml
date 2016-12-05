@@ -1,0 +1,22 @@
+﻿@using BooksBlog.ViewModels;
+@model GuestPostViewModel
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var comment in Model.Comments)
+            {
+            <tr><td>@comment.Content</td></tr>
+            <tr><td>Commented by @comment.Author.UserName</td></tr>
+        }
+
+    </tbody>
+</table>
+
+

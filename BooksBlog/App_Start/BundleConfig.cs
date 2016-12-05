@@ -9,7 +9,8 @@ namespace BooksBlog
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -19,13 +20,24 @@ namespace BooksBlog
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/admin").Include(
+                        "~/Scripts/tinymce/tinymce.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/jqBootstrapValidation.js",
+                      "~/Scripts/clean-blog.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/clean-blog.css",
+                      "~/Content/style.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/admin").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/admin.css"));
         }
     }
 }

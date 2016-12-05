@@ -1,0 +1,43 @@
+﻿@using BooksBlog.ViewModels;
+@model GuestPostViewModel
+
+
+<header class="intro-header" style="background-image: url('/Images/bookshelf.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>@Model.Title</h1>
+                    <h2 class="subheading">@Html.Raw(Model.SubHeader)</h2>
+                    <span class="meta">Posted by <a href="#">@Model.Author.UserName</a> on @Model.CreatedOn</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                @Html.Raw(Model.Content)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                @if (Model.Comments != null)
+                {
+                    <div class="table-responsive" id="commentsList">
+                        @Html.Partial("_commentsList", Model)
+                    </div>
+                }
+
+                <div id="divContent">
+                    @Html.Partial("_AddComment", new CommentViewModel(), new ViewDataDictionary { {"Id", Model.Id} } )
+                </div>
+
+            </div>
+        </div>
+    </div>
+</article>
+
