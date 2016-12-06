@@ -54,74 +54,32 @@
                 <div class="sidebar-widget">
                     <h3 class="sidebar-title">Featured Posts</h3>
                     <div class="widget-container">
-                        <article class="widget-post">
-                            <div class="post-image">
-                                <a href="post.html"><img src="images/90x60-1.jpg" alt=""></a>
-                            </div>
-                            <div class="post-body">
-                                <h2><a href="post.html">The State of the Word 2014</a></h2>
-                                <div class="post-meta">
-                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="widget-post">
-                            <div class="post-image">
-                                <a href="post.html"><img src="images/90x60-2.jpg" alt=""></a>
-                            </div>
-                            <div class="post-body">
-                                <h2><a href="post.html">Why The Muppets Needs to Channel 30 Rock</a></h2>
-                                <div class="post-meta">
-                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="widget-post">
-                            <div class="post-image">
-                                <a href="post.html"><img src="images/90x60-3.jpg" alt=""></a>
-                            </div>
-                            <div class="post-body">
-                                <h2><a href="post.html">The State of the Word 2014</a></h2>
-                                <div class="post-meta">
-                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="widget-post">
-                            <div class="post-image">
-                                <a href="post.html"><img src="images/90x60-4.jpg" alt=""></a>
-                            </div>
-                            <div class="post-body">
-                                <h2><a href="post.html">Vintage-Inspired Finds for Your Home</a></h2>
-                                <div class="post-meta">
-                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="widget-post">
-                            <div class="post-image">
-                                <a href="post.html"><img src="images/90x60-5.jpg" alt=""></a>
-                            </div>
-                            <div class="post-body">
-                                <h2><a href="post.html">The State of the Word 2014</a></h2>
-                                <div class="post-meta">
-                                    <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
-                                </div>
-                            </div>
-                        </article>
+                        <ul>
+                            @Html.Partial("_featuredPosts", (IEnumerable<BooksBlog.ViewModels.GuestPostViewModel>)ViewData["FeaturedPosts"])
+                        </ul>
+
                     </div>
+
                 </div>
                 <!-- sidebar-widget -->
                 <div class="sidebar-widget">
-                    <h3 class="sidebar-title">Socials</h3>
+                    <h3 class="sidebar-title">Archive</h3>
                     <div class="widget-container">
                         <div class="widget-socials">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-reddit"></i></a>
+                            <ul>
+                                <li>@Html.ActionLink("January", "FilterByMonth", "Home", new { monthId = 1 }, null)</li>
+                                <li>@Html.ActionLink("February", "FilterByMonth", "Home", new { monthId = 2 }, null)</li>
+                                <li>@Html.ActionLink("March", "FilterByMonth", "Home", new { monthId = 3 }, null)</li>
+                                <li>@Html.ActionLink("April", "FilterByMonth", "Home", new { monthId = 4 }, null)</li>
+                                <li>@Html.ActionLink("May", "FilterByMonth", "Home", new { monthId = 5 }, null)</li>
+                                <li>@Html.ActionLink("June", "FilterByMonth", "Home", new { monthId = 6 }, null)</li>
+                                <li>@Html.ActionLink("July", "FilterByMonth", "Home", new { monthId = 7 }, null)</li>
+                                <li>@Html.ActionLink("August", "FilterByMonth", "Home", new { monthId = 8 }, null)</li>
+                                <li>@Html.ActionLink("September", "FilterByMonth", "Home", new { monthId = 9 }, null)</li>
+                                <li>@Html.ActionLink("October", "FilterByMonth", "Home", new { monthId = 10 }, null)</li>
+                                <li>@Html.ActionLink("November", "FilterByMonth", "Home", new { monthId = 11 }, null)</li>
+                                <li>@Html.ActionLink("December", "FilterByMonth", "Home", new { monthId = 12 }, null)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -130,15 +88,7 @@
                     <h3 class="sidebar-title">Categories</h3>
                     <div class="widget-container">
                         <ul>
-                            @foreach (var item in Model)
-                            {<li>@Html.ActionLink(item.Category.Name, "FilterByCategory", "Home", new { Id = item.Category.Id }, null)
-                            </li>}
-                            <li><a href="#">Art</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Featured</a></li>
-                            <li><a href="#">Graphics</a></li>
-                            <li><a href="#">Peoples</a></li>
-                            <li><a href="#">Uncategorized</a></li>
+                           @Html.Partial("_categoryList", (IEnumerable<BooksBlog.Areas.Administration.ViewModels.CategoryViewModel>) ViewData["Categories"])
                         </ul>
                     </div>
                 </div>

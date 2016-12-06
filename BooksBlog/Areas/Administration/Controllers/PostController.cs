@@ -81,7 +81,8 @@ namespace BooksBlog.Areas.Administration.Controllers
 
             PostViewModel postVM = Mapper.
                 Map<PostViewModel>(post);
-            //postVM.Users = new SelectList(this.usersService.GetAll(), "Id", "Email", post.Id);
+
+            postVM.Categories = new SelectList(this.categoriesService.GetAll(),"Id","Name", postVM.CategoryId);            
             return View(postVM);
         }
 
@@ -89,18 +90,20 @@ namespace BooksBlog.Areas.Administration.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+  
         [ValidateInput(false)]
-        public ActionResult Edit(PostViewModel post)
+        public ActionResult Edit(PostViewModel post, int Id)
         {
             if (ModelState.IsValid)
             {
                 var dbPost = Mapper.Map<Post>(post);
+                //dbPost.Category = categoriesService.Find(post.CategoryId);
                 this.postsService.Update(dbPost);
                 return RedirectToAction("Index");
             }
 
             //post.Users = new SelectList(this.usersService.GetAll(), "Id", "Email", post.AuthorId);
+            post.Categories = new SelectList(this.categoriesService.GetAll());
             return View(post);
         }
 

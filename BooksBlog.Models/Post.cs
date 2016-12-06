@@ -16,6 +16,8 @@ namespace BooksBlog.Models
         
         public virtual Categories Category { get; set; }
 
+        public int CategoryId { get; set; }
+
         public virtual ICollection<Comments> Comments
         {
             get;

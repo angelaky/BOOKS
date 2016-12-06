@@ -7,33 +7,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BooksBlog.Areas.Administration.ViewModels;
+using BookBlog.Common.Caching;
 
 namespace BooksBlog.Controllers
 {
     public class HomeController : BaseController
     {
         private IPostService postsService;
-        //private ICacheService cache;
-        public HomeController(IPostService service)
+        private ICategoryService categoryService;
+        private ICacheService cache;
+        public HomeController(IPostService service, ICategoryService categoryService, ICacheService cache)
         {
-            //this.cache = cache;
+            this.cache = cache;
             this.postsService = service;
+            this.categoryService = categoryService;
         }
 
         public ActionResult Index()
         {
-            //var dbPosts = this.cache.Get<ICollection<Post>>("allPosts", () =>
-            //{
-            //    return postsService.GetAll().ToList();
-            //}, 60);
+            var dbPosts = this.cache.Get<ICollection<Post>>("allPosts", () =>
+            {
+                return postsService.GetAll().ToList();
+            }, 10);
 
-            //var posts = Mapper.Map<ICollection<Post>,
-            //    ICollection<PostViewModel>>(dbPosts);
-
-            //return View(posts);
             var posts = Mapper.Map<List<Post>,
                 List<GuestPostViewModel>>(postsService.GetAll().ToList());
 
+            ViewData["Categories"] = Mapper.Map<List<Categories>,
+                List<CategoryViewModel>>(categoryService.GetAll().ToList());
+
+            ViewData["FeaturedPosts"] = posts.OrderBy(i => i.Comments.Count).Take(10);
+
+            
             return View(posts);
         }
 
@@ -55,6 +61,13 @@ namespace BooksBlog.Controllers
         public ActionResult FilterByCategory(int id)
         {
             var posts = Mapper.Map<List<Post>,List<GuestPostViewModel>>(this.postsService.GetPosts(id).ToList());            
+
+            return View(posts);
+        }
+
+        public ActionResult FilterByMonth(int monthId)
+        {
+            var posts = Mapper.Map<List<Post>, List<GuestPostViewModel>>(this.postsService.GetPostsByMonth(monthId).ToList());
 
             return View(posts);
         }

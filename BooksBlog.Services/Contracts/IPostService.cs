@@ -13,6 +13,8 @@ namespace BooksBlog.Services.Contracts
 
         IEnumerable<Post> GetPosts(int catId);
 
+        IEnumerable<Post> GetPostsByMonth(int monthId);
+
 
     }
 }

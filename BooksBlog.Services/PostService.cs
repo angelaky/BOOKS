@@ -32,5 +32,10 @@ namespace BooksBlog.Services
         {
             return base.GetAll().Where(p => p.Category.Id == catId).ToList();
         }
+
+        public IEnumerable<Post> GetPostsByMonth(int monthId)
+        {
+            return base.GetAll().Where(p => p.CreatedOn.Value.Month == monthId).ToList();
+        }
     }
 }

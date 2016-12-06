@@ -24,6 +24,8 @@ namespace BooksBlog.Areas.Administration.ViewModels
 
         public CategoryViewModel Category { get; set; }
         public SelectList Categories { get; set; }
+
+        public int CategoryId { get; set; }
         public DateTime? CreatedOn { get; set; }
 
         public ICollection<Comments> Comments { get; set; }

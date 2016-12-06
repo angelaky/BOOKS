@@ -13,6 +13,7 @@ namespace BooksBlog.App_Start
     using Data;
     using Services.Contracts;
     using Services;
+    using BookBlog.Common.Caching;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -88,10 +89,10 @@ namespace BooksBlog.App_Start
                .To<CommentService>()
                .InRequestScope();
 
-            //kernel
-            //   .Bind<ICacheService>()
-            //   .To<HttpCacheService>()
-            //   .InRequestScope();
+            kernel
+               .Bind<ICacheService>()
+               .To<HttpCacheService>()
+               .InRequestScope();
         }        
     }
 }

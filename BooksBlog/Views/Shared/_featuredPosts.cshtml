@@ -1,0 +1,7 @@
+﻿@model IEnumerable<BooksBlog.ViewModels.GuestPostViewModel>
+
+@foreach (var item in Model)
+{
+    <li>
+        @Html.ActionLink(item.Title, "Info", "Home", new { Id = item.Id }, null)
+    </li>}

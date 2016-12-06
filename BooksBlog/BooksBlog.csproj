@@ -451,6 +451,7 @@
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Views\Shared\_commentsList.cshtml" />
+    <Content Include="Areas\Administration\Views\Post\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -517,6 +518,9 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Shared\_categoryList.cshtml" />
+    <Content Include="Views\Shared\_featuredPosts.cshtml" />
+    <Content Include="Views\Home\FilterByMonth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -532,6 +536,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BookBlog.Common\BookBlog.Common.csproj">
+      <Project>{3C72D818-5BBB-49B8-BD88-8C64B30B46CC}</Project>
+      <Name>BookBlog.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BooksBlog.Data\BooksBlog.Data.csproj">
       <Project>{c74f0a35-b103-457b-b1ab-e7bc09496662}</Project>
       <Name>BooksBlog.Data</Name>

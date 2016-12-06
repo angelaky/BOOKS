@@ -1,0 +1,7 @@
+﻿@model IEnumerable<BooksBlog.Areas.Administration.ViewModels.CategoryViewModel>
+
+@foreach (var item in Model)
+{
+<li>
+            @Html.ActionLink(item.Name, "FilterByCategory", "Home", new { Id = item.Id }, null)
+</li>}

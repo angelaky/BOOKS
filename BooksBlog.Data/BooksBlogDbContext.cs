@@ -12,9 +12,14 @@ namespace BooksBlog.Data
     public class BooksBlogDbContext : IdentityDbContext
     {
         public BooksBlogDbContext()
-            : base("BooksBlogDB")
+            : base("BooksSystem")
         {
-            
+            this.Database.Log += Log;
+        }
+
+        private static void Log(string text)
+        {
+            System.Diagnostics.Debug.WriteLine(text);
         }
 
         public IDbSet<ApplicationUser> Users
@@ -53,5 +58,11 @@ namespace BooksBlog.Data
         }
 
         public System.Data.Entity.DbSet<BooksBlog.Areas.Administration.ViewModels.PostViewModel> PostViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<BooksBlog.Areas.Administration.ViewModels.CategoryViewModel> CategoryViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<BooksBlog.ViewModels.GuestPostViewModel> GuestPostViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<BooksBlog.Areas.Administration.ViewModels.PostViewModel> PostViewModels { get; set; }
     }
 }
