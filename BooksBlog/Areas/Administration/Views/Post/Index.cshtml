@@ -1,5 +1,7 @@
-﻿@using BooksBlog.Areas.Administration.ViewModels;
-@model IEnumerable<PostViewModel>
+﻿@model PagedList.IPagedList<PostViewModel>
+@using PagedList.Mvc; 
+@using BooksBlog.Areas.Administration.ViewModels;
+
 
 <h2>Index</h2>
 
@@ -7,21 +9,6 @@
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Author.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th></th>
-    </tr>
 
     @foreach (var item in Model)
     {
@@ -46,4 +33,6 @@
     }
 
 </table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 

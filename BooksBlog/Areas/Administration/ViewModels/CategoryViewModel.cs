@@ -13,7 +13,7 @@ namespace BooksBlog.Areas.Administration.ViewModels
 
         [Display(Name = "Category Name")]
         [Required]
-        [MaxLength(20)]
+        [StringLength(20)]
         public string Name { get; set; }
 
         public ApplicationUserViewModel Author { get; set; }

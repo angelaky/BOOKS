@@ -32,9 +32,19 @@
                     </div>
                 }
 
-                <div id="divContent">
-                    @Html.Partial("_AddComment", new CommentViewModel(), new ViewDataDictionary { {"Id", Model.Id} } )
-                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div id="divContent">
+                        @Html.Partial("_AddComment", new CommentViewModel(), new ViewDataDictionary { { "Id", Model.Id } })
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.ActionLink("Please log in to add comment", "Login", "Account", new { returnUrl = Request.Url.AbsolutePath}, null)
+                    </div>
+                }
+
 
             </div>
         </div>

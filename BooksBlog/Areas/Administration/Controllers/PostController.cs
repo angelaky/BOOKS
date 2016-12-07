@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace BooksBlog.Areas.Administration.Controllers
 {
@@ -28,12 +29,15 @@ namespace BooksBlog.Areas.Administration.Controllers
         }
 
         // GET: Administration/Posts
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var posts = Mapper.Map<List<Post>,
                 List<PostViewModel>>(postsService.GetAll().ToList());
 
-            return View(posts);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(posts.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Administration/Posts/Create

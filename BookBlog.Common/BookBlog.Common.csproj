@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Caching\HttpCacheService.cs" />
     <Compile Include="Caching\ICacheService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
