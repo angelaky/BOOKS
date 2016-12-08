@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,9 @@ namespace BooksBlog.Models
 
         public string Content { get; set; }
 
+        public virtual string Author_Id { get; set; }
+
+        [ForeignKey("Author_Id")]
         public virtual ApplicationUser Author { get; set; } 
         
         public virtual Categories Category { get; set; }

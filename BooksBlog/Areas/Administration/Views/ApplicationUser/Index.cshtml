@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BooksBlog.ViewModels.ApplicationUserViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Register", "../Account", new { returnUrl = Request.Url.AbsolutePath }, null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>@Html.DisplayNameFor(model => model.CommentsCount)</th>
+        <th>@Html.DisplayNameFor(model => model.LastActivity)</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="user-@item.Id">
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastActivity)
+        </td>
+        <td>
+             @Ajax.ActionLink("Delete", "Delete", "ApplicationUser", new { userId = item.Id },
+            new AjaxOptions()
+            {
+                HttpMethod="Post",
+                Confirm= "Are you sure you wantto delete this user?",
+                OnComplete = String.Concat("DeleteUserRow('", @item.Id, "')")
+            })
+            
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts {
+
+    <script>
+        function DeleteUserRow(userId) {
+            $("#user-"+ userId).remove(); 
+        }
+
+    </script>
+    
+}

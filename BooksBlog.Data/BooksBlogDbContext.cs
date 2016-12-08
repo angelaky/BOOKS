@@ -52,17 +52,18 @@ namespace BooksBlog.Data
             set;
         }
 
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Post>().HasOptional()
+        //    .WithOptional()
+        //    .WillCascadeOnDelete(true);
+
+        //    base.OnModelCreating(modelBuilder);
+        //}
+
         public static BooksBlogDbContext Create()
         {
             return new BooksBlogDbContext();
-        }
-
-        public System.Data.Entity.DbSet<BooksBlog.Areas.Administration.ViewModels.PostViewModel> PostViewModels { get; set; }
-
-        public System.Data.Entity.DbSet<BooksBlog.Areas.Administration.ViewModels.CategoryViewModel> CategoryViewModels { get; set; }
-
-        public System.Data.Entity.DbSet<BooksBlog.ViewModels.GuestPostViewModel> GuestPostViewModels { get; set; }
-
-        //public System.Data.Entity.DbSet<BooksBlog.Areas.Administration.ViewModels.PostViewModel> PostViewModels { get; set; }
+        }       
     }
 }

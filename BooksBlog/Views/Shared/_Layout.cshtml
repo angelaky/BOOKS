@@ -28,6 +28,13 @@
                                                      
                          { @Html.ActionLink("Categories","Index","Category", new { area = "Administration" }, null) }
                      </li>
+                    <li>
+                        @if (Roles.IsUserInRole("AppAdmin"))
+
+                        { @Html.ActionLink("Users", "Index", "ApplicationUser", new { area = "Administration" }, null) }
+                    </li>
+
+
 
                 </ul>
                 @Html.Partial("_LoginPartial")

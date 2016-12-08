@@ -27,5 +27,15 @@ namespace BooksBlog.Services
             base.Add(entity);
             base.SaveChanges();
         }
+
+        public IEnumerable<Comments> GetCommentsByUser(string authorId)
+        {
+            return base.GetAll().Where(p => p.Author.Id == authorId);
+        }
+
+        public IEnumerable<Comments> LastActivity(string authorId)
+        {
+            return base.GetAll().Where(p => p.Author.Id == authorId).OrderByDescending(p => p.CreatedOn);
+        }
     }
 }

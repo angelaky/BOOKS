@@ -108,6 +108,10 @@
     <Compile Include="Migrations\201612061344407_add id to post.Designer.cs">
       <DependentUpon>201612061344407_add id to post.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612081343284_lkgf.cs" />
+    <Compile Include="Migrations\201612081343284_lkgf.Designer.cs">
+      <DependentUpon>201612081343284_lkgf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612061344407_add id to post.resx">
       <DependentUpon>201612061344407_add id to post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612081343284_lkgf.resx">
+      <DependentUpon>201612081343284_lkgf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

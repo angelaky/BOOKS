@@ -9,6 +9,8 @@ namespace BooksBlog.Services.Contracts
 {
     public interface ICommentService : IService<Comments>
     {
-            IQueryable<Comments> GetAll();
+        IQueryable<Comments> GetAll();
+        IEnumerable<Comments> GetCommentsByUser(string authorId);
+        IEnumerable<Comments> LastActivity(string authorId);
     }
 }

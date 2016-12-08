@@ -14,7 +14,8 @@ namespace BooksBlog.Mapping
         protected override void Configure()
         {
             CreateMap<ApplicationUser, ApplicationUserViewModel>();
-            CreateMap<ApplicationUserViewModel, ApplicationUser>();
+            CreateMap<ApplicationUserViewModel, ApplicationUser>().ForSourceMember(src => src.CommentsCount, option => option.Ignore());
+            //add ignore
             CreateMap<Post, PostViewModel>();
             CreateMap<PostViewModel, Post>();
             CreateMap<Post, GuestPostViewModel>();
