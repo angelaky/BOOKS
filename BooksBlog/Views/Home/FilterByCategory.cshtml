@@ -1,52 +1,34 @@
 ﻿@using BooksBlog.ViewModels;
 @model IEnumerable<GuestPostViewModel>
 
-@{
-    ViewBag.Title = "FilterByCategory";
-}
 
-<h2>FilterByCategory</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+<header class="intro-header" style="background-image: url('/Images/bookshelf.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Category: @Model.First().Category.Name</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="row">
+    <div class="col-md-8 col-md-offset-1">
+        @foreach (var post in Model)
+            {
+            <div class="post-preview">
+                <a href="../Info/@post.Id">
+                    <h2 class="post-title">
+                        @post.Title
+                    </h2>
+                    <h3 class="post-subtitle">
+                        @Html.Raw(post.Content)
+                    </h3>
+                </a>
+                <p class="post-meta">Comments: @post.Comments.Count</p>
+            </div>
+                <hr>
+        }
+    </div>
+    </div>

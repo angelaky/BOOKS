@@ -59,7 +59,10 @@ namespace BooksBlog.Areas.Administration.Controllers
             {
                 var dbPost = Mapper.Map<Post>(post);
                 dbPost.Author = usersService.Find(User.Identity.GetUserId());
+                dbPost.Author_Id = usersService.Find(User.Identity.GetUserId()).Id;
                 dbPost.Category = categoriesService.Find(Id);
+                dbPost.Category = categoriesService.Find(Id);
+                dbPost.CategoryId = categoriesService.Find(Id).Id;
                 this.postsService.Add(dbPost);
                 return RedirectToAction("Index");
             }
